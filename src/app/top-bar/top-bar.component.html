@@ -1,0 +1,23 @@
+
+<a [routerLink]="['/']">
+  <img src="../../assets/media/logo.png" alt="logo" width=100%
+  height=auto>
+</a>
+
+<a><p>HOME</p></a>
+<a><p>SHOP</p></a>
+<a><p>JOURNAL</p></a>
+<a><p>MORE</p></a>
+
+
+
+<button type="button" class="button fancy-button" (click)="gotoCartPopup()">
+  <i class="material-icons">shopping_cart</i>MY CART
+  <span class="badge badge-light">({{getCartTotalCount()}})</span>
+</button>
+
+<!-- <a routerLink="/cart-popup" class="button fancy-button">
+  <i class="material-icons">shopping_cart</i>MY CART
+  <span class="badge badge-light">(4)</span>
+</a> -->
+

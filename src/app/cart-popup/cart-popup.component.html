@@ -1,0 +1,61 @@
+<div class="modal-header modal-header-primary">
+  <h4 class="modal-title">CART POPUP!</h4>
+  <button
+    type="button"
+    class="close"
+    aria-label="Close"
+    (click)="activeModal.dismiss('Cross click')"
+  >
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <div class="container mt-3">
+    <div *ngIf="items && items.length > 0">
+      <div *ngFor="let item of items; index as itemId">
+        <div class="row">
+          <div class="col-sm-4">
+            <img
+              class="img-responsive"
+              src="assets/media/{{ item.image }}"
+              width="200px"
+              height="100px"
+            />
+          </div>
+          <div class="col-sm-6">
+            <h4>{{ item.title }} x {{ item.quantity }}</h4>
+            <h5>
+              <small class="text-muted">{{ item.brand }}</small>
+            </h5>
+            <h4>{{ item.price | currency }}</h4>
+          </div>
+
+          <div class="col-sm-2">
+            <button
+              type="button"
+              class="close"
+              (click)="removeItem(item.title)"
+            >
+              &times;
+            </button>
+          </div>
+        </div>
+        <hr />
+      </div>
+
+      <div class="row">
+        <div class="col-sm-6 text-left">
+          <p class="text-muted">TOTAL</p>
+        </div>
+        <div class="col-sm-6 text-right">
+          <p class="text-muted">{{ cartTotal | currency }}</p>
+        </div>
+      </div>
+
+      <button type="button" class="btn btn-outline-dark" (click)="viewCart()">
+        VIEW CART
+      </button>
+      <button type="button" class="btn btn-dark">CHECKOUT</button>
+    </div>
+  </div>
+</div>

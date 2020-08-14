@@ -1,0 +1,89 @@
+<div class="container mt-3">
+  <p class="text-center mb-5 display-4">Shopping Cart</p>
+
+  <div class="row" *ngIf="items && items.length > 0">
+    <div class="col-sm-5 text-muted"><small>PRODUCT</small></div>
+    <div class="col-sm-3 text-muted"><small>QUANTITY</small></div>
+    <div class="col-sm-2 text-muted"><small>TOTAL</small></div>
+    <div class="col-sm-2 text-muted text-right"><small>ACTION</small></div>
+  </div>
+  <hr />
+  <div *ngIf="items && items.length > 0">
+    <div *ngFor="let item of items; index as itemId">
+      <div class="row">
+        <div class="col-sm-3">
+          <img
+            class="img-responsive"
+            src="assets/media/{{ item.image }}"
+            width="200px"
+            height="100px"
+          />
+        </div>
+        <div class="col-sm-2">
+          <h6>{{ item.brand }}</h6>
+          <h5>{{ item.title }}</h5>
+        </div>
+        <div class="col-sm-3">
+          <button
+            class="button fancy-button"
+            type="button"
+            id="plus"
+            (click)="addCounter(item.quantity, itemId)"
+          >
+            <i class="material-icons">add</i>
+          </button>
+          <input type="number" min="0" max="100" [(ngModel)]="item.quantity" />
+          <button
+            class="button fancy-button"
+            type="button"
+            id="minus"
+            (click)="removeCounter(item.quantity, itemId)"
+          >
+            <i class="material-icons">remove</i>
+          </button>
+        </div>
+        <div class="col-sm-2">
+          <h5>{{ item.price | currency }}</h5>
+        </div>
+        <div class="col-sm-2">
+          <button type="button" class="close" (click)="removeItem(item.title)">
+            &times;
+          </button>
+        </div>
+      </div>
+      <hr />
+    </div>
+    <div class="row">
+      <div class="col-sm-6 text-right">
+        <p><small class="text-muted">CART OVERVIEW</small></p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-6 text-right">
+        <p><small class="text-muted">SUBTOTAL</small></p>
+      </div>
+      <div class="col-sm-6 text-right">
+        <p>
+          <small class="text-muted">{{ getCartTotal() | currency }}</small>
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-6 text-right">
+        <p><small class="text-muted">TOTAL</small></p>
+      </div>
+      <div class="col-sm-6 text-right">
+        <p>
+          <small class="text-muted">{{ cartTotal | currency }} AUD</small>
+        </p>
+      </div>
+    </div>
+    <hr />
+  </div>
+  <a href="#" [routerLink]="['/']"><small>CONTINUE SHOPPING</small></a>
+  <ng-container *ngIf="cartTotal > 0">
+    <button type="button" class="btn btn-dark" (click)="addToCart(product)">
+      <small>CHECKOUT ({{ cartTotal | currency }})</small>
+    </button>
+  </ng-container>
+</div>

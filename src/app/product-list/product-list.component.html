@@ -1,0 +1,32 @@
+<div class="container">
+  <div class="row text-center">
+    <div
+      class="col-sm-4"
+      *ngFor="let product of products | async; index as productId"
+    >
+      <figure>
+        <img
+          class="img-responsive image"
+          src="assets/media/{{ product.image }}"
+          width="250px"
+          height="200px"
+        />
+        <figcaption>
+          <h3>
+            <a
+              [title]="product.title + ' details'"
+              [routerLink]="['/products', productId]"
+              [queryParams]="{ product: product | json }"
+            >
+              {{ product.brand }}
+            </a>
+            <p>{{ product.title }}</p>
+            <p>{{ product.price | currency }}</p>
+          </h3>
+        </figcaption>
+      </figure>
+      <!-- <button type="button" class="btn btn-dark middle" (click)="addToCart(product)" >ADD TO CART</button>
+                <button type="button" class="btn btn-dark middle" (click)="addToCart(product)" >VIEW DETAILS</button> -->
+    </div>
+  </div>
+</div>

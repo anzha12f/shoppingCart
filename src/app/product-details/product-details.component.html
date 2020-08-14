@@ -1,0 +1,40 @@
+<div class="container mt-3">
+  <div class="row text-center" *ngIf="product">
+    <div class="col-sm-6">
+      <img
+        class="img-responsive"
+        src="assets/media/{{ product.image }}"
+        width="450px"
+        height="300px"
+      />
+    </div>
+    <div class="col-sm-6">
+      <h5>{{ product.brand }}</h5>
+      <h3>{{ product.title }}</h3>
+      <h4>{{ product.price | currency }}</h4>
+      <h6>{{ product.description }}</h6>
+      <hr />
+      <button
+        class="button fancy-button"
+        type="button"
+        id="plus"
+        (click)="addCounter()"
+      >
+        <i class="material-icons">add</i>
+      </button>
+      <input type="number" min="0" max="100" [(ngModel)]="qtyCount" />
+      <button
+        class="button fancy-button"
+        type="button"
+        id="minus"
+        (click)="removeCounter()"
+      >
+        <i class="material-icons">remove</i>
+      </button>
+      <button type="button" class="btn btn-dark" (click)="addToCart(product)">
+        ADD TO CART
+      </button>
+    </div>
+  </div>
+</div>
+

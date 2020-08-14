@@ -1,0 +1,23 @@
+.close {
+    font-size: 3.0em;
+}
+
+a:link {
+    text-decoration: underline;
+  }
+  
+  a:visited {
+    text-decoration: none;
+  }
+  
+  a:hover {
+    text-decoration: underline;
+  }
+  
+  a:active {
+    text-decoration: underline;
+  }
+
+  .btn-dark {
+      float: right;
+  }
