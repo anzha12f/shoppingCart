@@ -127,4 +127,8 @@ describe("CartService", () => {
     expect(req.request.method).toBe("GET");
     req.flush(products);
   });
+
+  afterEach(() => {
+    httpTestingController.verify();
+  })
 });

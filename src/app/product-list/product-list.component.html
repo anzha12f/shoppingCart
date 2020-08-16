@@ -1,16 +1,40 @@
 <div class="container">
-  <div class="row text-center">
+  <div class="row">
+    <div class="col">
+      <img
+      class="img-responsive image"
+      src="assets/media/plates-header1.jpg"
+      
+      height=100%
+      width=100%
+    />
+
+    <div class="header--title">
+    <h4>PLATES</h4>
+    
+    </div>
+    <hr>
+  </div>
+  </div>  
+  <div class="row text-center mt-2">
     <div
       class="col-sm-4"
       *ngFor="let product of products | async; index as productId"
     >
       <figure>
-        <img
-          class="img-responsive image"
-          src="assets/media/{{ product.image }}"
-          width="250px"
-          height="200px"
-        />
+        <div class="fig1" id="spanhovering">
+          <img
+            class="img-responsive image"
+            src="assets/media/{{ product.image }}"
+            width="250px"
+            height="200px"
+          />
+
+          <div class="overlay overlay1"></div>
+
+          <div class="button1"><a href="#" [routerLink]="['/products', productId]" [queryParams]="{ product: product | json }"> VIEW DETAILS </a></div>
+          <div class="button2"><a href="#" (click)="addToCart(product)"> ADD TO CART </a></div>
+        </div>
         <figcaption>
           <h3>
             <a
@@ -25,8 +49,6 @@
           </h3>
         </figcaption>
       </figure>
-      <!-- <button type="button" class="btn btn-dark middle" (click)="addToCart(product)" >ADD TO CART</button>
-                <button type="button" class="btn btn-dark middle" (click)="addToCart(product)" >VIEW DETAILS</button> -->
     </div>
   </div>
 </div>
